@@ -1,0 +1,42 @@
+#include <iostream>
+#include <vector>
+#include <cmath>
+
+using namespace std;
+
+class Solution {
+public:
+    vector<int> nextGreaterElement(vector<int>& findNums, vector<int>& nums) {
+        vector<int> ans;
+        bool finded = false;
+        for(int i = 0; i < findNums.size(); i++){
+            finded = false;
+            for(int j=0; j < nums.size(); j++){
+                if(finded && nums[j] > findNums[i]){
+                    ans.push_back(nums[j]);
+                    break;
+                }
+                
+                if(nums[j] == findNums[i]){
+                    finded = true;
+                }
+            }
+            if(ans.size() != i+1) ans.push_back(-1);
+        }
+        
+        return ans;
+    }
+};
+
+
+int main(){
+    Solution solve;
+    vector<int> findNames({4,1,2});
+    vector<int> nums({1,3,4,2});
+    
+    solve.nextGreaterElement(findNames, nums);
+    
+    return 0;
+}
+
+    
